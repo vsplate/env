@@ -15,6 +15,8 @@ RUN yum -y install httpd mod_ssl php php-devel php-gd php-pdo php-soap php-xmlrp
 
 RUN yum clean all
 
+RUN service mysqld start && mysqladmin -u root password toor
+
 COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80

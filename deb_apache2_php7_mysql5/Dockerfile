@@ -20,8 +20,6 @@ RUN apt-get update && \
     service mysql start && \
     service apache2 start
 
-RUN service mysql start && mysqladmin -u root -ptoor password ''
-
 COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80
