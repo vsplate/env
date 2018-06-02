@@ -17,9 +17,7 @@ RUN apt-get update && \
     apt-get clean
 
 RUN sed -i -e 's/^exit 0/service mysql start\nexit 0/i' /etc/rc.local && \
-    sed -i -e 's/^exit 0/service apache2 start\nexit 0/i' /etc/rc.local && \
-    service mysql start && \
-    service apache2 start
+    sed -i -e 's/^exit 0/service apache2 start\nexit 0/i' /etc/rc.local
 
 COPY supervisord.conf /etc/supervisord.conf
 
