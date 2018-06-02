@@ -11,7 +11,7 @@ RUN yum -y install python-setuptools \
 && mkdir -p /var/log/supervisor \
 && easy_install supervisor
 
-RUN yum -y install httpd mod_ssl php php-devel php-gd php-pdo php-soap php-xmlrpc php-xml php-mysql mysql mysql-server
+RUN yum -y install httpd mod_ssl php php-devel php-gd php-pdo php-soap php-xmlrpc php-xml php-mysql mysql mysql-server crontabs
 
 RUN yum clean all
 
