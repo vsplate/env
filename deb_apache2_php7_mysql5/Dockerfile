@@ -1,8 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Ambulong <zeng.ambulong@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update && \
     apt-get install -y apt-utils net-tools debconf-utils iputils-ping wget curl vim unzip supervisor cron && \
     echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
