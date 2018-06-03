@@ -17,6 +17,7 @@ RUN yum clean all
 
 RUN service mysqld start && mysqladmin -u root password toor
 
+COPY php.ini /etc/php.ini
 COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80

@@ -1,9 +1,9 @@
-FROM ubuntu:16.04
+FROM debian:stretch
 MAINTAINER Ambulong <zeng.ambulong@gmail.com>
 
 RUN apt-get update && \
-    apt-get install -y apt-utils net-tools debconf-utils iputils-ping wget curl vim unzip supervisor cron && \
-    echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
+    apt-get install -y apt-utils net-tools debconf-utils iputils-ping wget curl vim unzip supervisor cron
+RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
     echo "mysql-server mysql-server/root_password_again password toor" | debconf-set-selections && \
     apt-get -y install mysql-server && \
     apt-get -y install mysql-client && \
@@ -14,6 +14,7 @@ RUN apt-get update && \
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
 
+COPY php.ini /etc/php/7.0/apache2/php.ini
 COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80
