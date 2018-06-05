@@ -12,7 +12,8 @@ RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-s
     apt-get -y install tzdata && \
     apt-get -y install php php-xml php-gd php-mbstring php-mysql php-pdo && \
     apt-get -y install apache2 libapache2-mod-php && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/www/html/*
 
 COPY php.ini /etc/php/7.0/apache2/php.ini
 COPY supervisord.conf /etc/supervisord.conf

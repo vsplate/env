@@ -13,7 +13,8 @@ RUN yum -y install python-setuptools \
 
 RUN yum -y install httpd mod_ssl php php-devel php-gd php-pdo php-soap php-xmlrpc php-xml php-mysql mysql mysql-server crontabs
 
-RUN yum clean all
+RUN yum clean all \
+&& rm -rf /var/www/html/*
 
 RUN service mysqld start && mysqladmin -u root password toor
 
