@@ -9,7 +9,7 @@ RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-s
     apt-get -y install mysql-client && \
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     echo "tzdata tzdata/Areas select Etc\n tzdata tzdata/Zones/Etc select UTC"  | debconf-set-selections && \
-    apt-get -y install tzdata && \
+    apt-get -y install tzdata
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh && \
     bash nodesource_setup.sh && \
