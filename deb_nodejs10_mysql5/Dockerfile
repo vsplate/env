@@ -12,7 +12,7 @@ RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-s
     apt-get -y install tzdata && \
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh && \
-    /bin/sh nodesource_setup.sh && \
+    bash nodesource_setup.sh && \
     apt-get -y install nodejs build-essential && \
     apt-get clean && rm -rf nodesource_setup.sh && \
     npm install -g express
