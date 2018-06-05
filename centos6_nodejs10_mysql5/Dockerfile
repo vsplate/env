@@ -15,7 +15,7 @@ RUN yum -y install mysql mysql-server crontabs
 
 RUN service mysqld start && mysqladmin -u root password toor
 
-RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
 
 RUN yum -y install nodejs gcc-c++ make npm
 
