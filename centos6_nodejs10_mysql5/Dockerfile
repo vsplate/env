@@ -15,9 +15,11 @@ RUN yum -y install mysql mysql-server crontabs
 
 RUN service mysqld start && mysqladmin -u root password toor
 
+RUN yum erase /etc/yum.repos.d/nodesource-el.repo
+
 RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
 
-RUN yum -y install nodejs gcc-c++ make npm
+RUN yum -y install nodejs gcc-c++ make
 
 RUN yum clean all
 
