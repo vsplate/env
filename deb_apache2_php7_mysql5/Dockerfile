@@ -14,6 +14,8 @@ RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-s
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
 
+RUN service mysql start && mysql -u root -ptoor -e 'use mysql;update user set plugin="mysql_native_password" where user="root";flush privileges;'
+
 RUN rm -rf /var/www/html/*
 
 COPY php.ini /etc/php/7.0/apache2/php.ini

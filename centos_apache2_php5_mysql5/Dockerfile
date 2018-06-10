@@ -11,7 +11,7 @@ RUN yum -y install python-setuptools \
 && mkdir -p /var/log/supervisor \
 && easy_install supervisor
 
-RUN yum -y install httpd mod_ssl php php-devel php-gd php-pdo php-soap php-xmlrpc php-xml php-mysql mysql mysql-server crontabs
+RUN yum -y install httpd mod_ssl php php-devel php-mbstring php-gd php-pdo php-soap php-xmlrpc php-xml php-mysql mysql mysql-server crontabs
 
 RUN yum -y install yum -y install sendmail sendmail-cf mailx \
 && echo 'echo 127.0.0.1 localhost localhost.localdomain `hostname` > /etc/hosts && /etc/init.d/sendmail start' > /sendmail_startup.sh
