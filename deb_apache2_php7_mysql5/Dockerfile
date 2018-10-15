@@ -1,9 +1,9 @@
-FROM debian:stretch
+FROM ubuntu:16.04
 MAINTAINER Ambulong <zeng.ambulong@gmail.com>
 
 RUN apt-get update && \
-    apt-get install -y apt-utils net-tools debconf-utils iputils-ping wget curl vim unzip supervisor cron
-RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
+    apt-get install -y apt-utils net-tools debconf-utils iputils-ping wget curl vim unzip supervisor cron && \
+    echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
     echo "mysql-server mysql-server/root_password_again password toor" | debconf-set-selections && \
     apt-get -y install mysql-server && \
     apt-get -y install mysql-client && \
@@ -14,7 +14,7 @@ RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-s
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
 
-RUN service mysql start && mysql -u root -ptoor -e 'use mysql;update user set authentication_string=PASSWORD("toor"),plugin="mysql_native_password" where user="root";flush privileges;'
+RUN service mysql start && mysql -u root -ptoor -e 'create database test;use mysql;update user set authentication_string=PASSWORD("toor"),plugin="mysql_native_password" where user="root";flush privileges;'
 
 RUN rm -rf /var/www/html/*
 

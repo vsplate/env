@@ -19,7 +19,7 @@ RUN yum -y install yum -y install sendmail sendmail-cf mailx \
 RUN yum clean all \
 && rm -rf /var/www/html/*
 
-RUN service mysqld start && mysqladmin -u root password toor
+RUN service mysqld start && mysqladmin -u root password toor && mysql -u root -ptoor -e 'CREATE DATABASE IF NOT EXISTS test;'
 
 COPY httpd.conf /etc/httpd/conf/httpd.conf
 COPY php.ini /etc/php.ini
