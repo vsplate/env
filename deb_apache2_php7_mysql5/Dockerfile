@@ -6,17 +6,11 @@ RUN apt-get update && \
     echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
     echo "mysql-server mysql-server/root_password_again password toor" | debconf-set-selections && \
     apt-get -y install mysql-server && \
+    service mysql start  && mysql -u root -ptoor -e 'create database test' && \
     apt-get -y install mysql-client && \
-    export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
-    echo "tzdata tzdata/Areas select Etc\n tzdata tzdata/Zones/Etc select UTC"  | debconf-set-selections && \
-    apt-get -y install tzdata && \
-    apt-get -y install php php-xml php-gd php-mbstring php-mysql php-pdo && \
+    apt-get -y install php php-xml php-gd php-mbstring php-mysql php-pdo php-sqlite3 php-mcrypt && \
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
-
-RUN service mysql start;mysql -u root -ptoor -e 'create database test;use mysql;update user set authentication_string=PASSWORD("toor"),plugin="mysql_native_password" where user="root";flush privileges;'
-
-RUN apt-get update && apt-get install php-sqlite3 && apt-get clean;
 
 RUN rm -rf /var/www/html/*
 
