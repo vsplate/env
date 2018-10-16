@@ -10,7 +10,7 @@ RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     echo "tzdata tzdata/Areas select Etc\n tzdata tzdata/Zones/Etc select UTC"  | debconf-set-selections && \
     apt-get -y install tzdata && \
-    apt-get -y install php php-xml php-gd php-mbstring php-mysql php-pdo && \
+    apt-get -y install php php-xml php-gd php-mbstring php-mysql php-pdo php-sqlite3 && \
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
 
