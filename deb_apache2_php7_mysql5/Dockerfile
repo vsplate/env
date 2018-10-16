@@ -14,7 +14,7 @@ RUN apt-get update && \
     apt-get -y install apache2 libapache2-mod-php && \
     apt-get clean
 
-RUN service mysql start && mysql -u root -ptoor -e 'create database test;use mysql;update user set authentication_string=PASSWORD("toor"),plugin="mysql_native_password" where user="root";flush privileges;'
+RUN mysql -u root -ptoor -e 'create database test;use mysql;update user set authentication_string=PASSWORD("toor"),plugin="mysql_native_password" where user="root";flush privileges;'
 
 RUN rm -rf /var/www/html/*
 
