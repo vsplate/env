@@ -41,7 +41,9 @@ RUN docker-php-ext-install mysqli pdo_mysql imap gd exif dom gettext mbstring so
 # MySQL set up
 RUN echo 'mysql-server mysql-server/root_password password toor' | debconf-set-selections && \
     echo 'mysql-server mysql-server/root_password_again password toor' | debconf-set-selections && \
-    apt-get -y install mysql-server
+    apt-get -y install mysql-server && \
+    service mysql start && \
+    mysql -u root -ptoor -e "UPDATE mysql.user SET plugin = 'mysql_native_password', Password = PASSWORD('toor') WHERE User = 'root';"
 
 RUN rm -rf /var/www/html/*
 
